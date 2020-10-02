@@ -1,4 +1,5 @@
 # Project Proposal
+By Bryce Plunkett, Nicholas Boshart, Sami Rahman, Paul Dittamo
 
 <img style="border-radius: 20px; box-shadow: 10px 10px 10px #88888844;" width="75%" src="https://i.imgur.com/RNezsjF.jpg" />
 
