@@ -1,3 +1,8 @@
+---
+layout: default
+title: Midterm Report
+nav_order: 1
+---
 # Midterm Report
 By Bryce Plunkett, Nicholas Boshart, Sami Rahman, Paul Dittamo
 
