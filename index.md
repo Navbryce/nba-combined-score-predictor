@@ -1,3 +1,9 @@
+---
+layout: default
+title: Project Proposal
+nav_order: 0
+---
+
 # Project Proposal
 By Bryce Plunkett, Nicholas Boshart, Sami Rahman, Paul Dittamo
 
