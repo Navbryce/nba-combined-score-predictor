@@ -1,0 +1,4 @@
+dataset,model,train_r_2,train_rmse,test_r_2,test_rmse
+all_seasons_merged_mult_feature-selected,decision_tree,0.9983589356131596,0.8359642147292956,-0.22515741955454072,23.977647011960208
+all_seasons_merged_mult_feature-selected,random_forest,0.7194047909258913,10.931128565885091,0.388830311020409,16.935246360813807
+all_seasons_merged_mult_feature-selected,gradient_boost_regressor,0.41457009265948463,15.789280096146841,0.38556066926271126,16.980486111278786
