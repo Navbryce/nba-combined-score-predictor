@@ -11,7 +11,7 @@ def merge_home_and_away_scores(dataframe):
         column_values = values[:, columns.get_loc(column)]
         if column[:2] == "h_":
             stat = column[2:]
-            column_values = column_values - values[:, columns.get_loc("a_" + stat)]
+            column_values = column_values * values[:, columns.get_loc("a_" + stat)]
             column = stat
         elif column[:2] == "a_":
             continue
