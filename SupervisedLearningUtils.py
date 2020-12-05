@@ -17,6 +17,13 @@ def read_csv_and_get_inputs_and_labels_classification(path, label_column="ttl_pt
     return input, categories
 
 
+def read_csv_and_get_inputs_and_labels_bin_classification(path, label_column="ttl_pts", mean=224, width=2):
+    df = pd.read_csv(path)
+    input = df.loc[:, df.columns != label_column]
+    points = df[[label_column]].to_numpy()[:, 0]
+    labels = np.where((points <= mean + width) & (points >= mean - width), True, False)
+    return input, labels
+
 def test_model(model, train, test):
     train_inputs, train_labels = train
     test_inputs, test_labels = test
