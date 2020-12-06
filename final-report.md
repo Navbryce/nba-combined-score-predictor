@@ -21,7 +21,7 @@ By using principal component analysis during our unsupervised learning stage, we
 
 <div>&nbsp;</div>
 
-Additionally, we performed K-Means on each dataset with cluster numbers ranging from 2 to 80. To evaluate the results, we computed a silhouette coefficient and loss metric for each clustering. The silhouette coefficient was calculated using the mean intra-cluster distance and the mean nearest-cluster distance for each clustering, whereas the loss metric involved the euclidean distance from each cluster's center. In the end, we found that all clusters had a silhouette coefficient well below 1.0, thus indicating the futility of using clustering-based methods. This unsatisfactory result, however, was not at all surprising, as we were aleady aware of the problem's regression-oriented nature. Thus, little was yielded from K-Means.
+Additionally, we performed K-Means on each dataset with number of clusters ranging from 2 to 80. To evaluate the results, we computed a silhouette coefficient and loss metric for each clustering. The silhouette coefficient was calculated using the mean intra-cluster distance and the mean nearest-cluster distance for each clustering, whereas the loss metric involved the euclidean distance from each cluster's center. In the end, we found that all clusters had a silhouette coefficient well below 1.0 and incredibly high losses, thus indicating the futility of using clustering-based methods. This unsatisfactory result, however, was not at all surprising, as we were already aware of the problem's regression-oriented nature. Thus, little was yielded from K-Means.
 ## Supervised Learning
 ### Exploratory Stage
 #### Initial Methods
@@ -118,16 +118,16 @@ Iteration 4  →  R^2 = 0.375974623 for (max_iter=1500, hidden_layer_sizes=(100,
 
 ### Converting to a Classification Problem
 #### Idea and Methods
-Finally, we attempted to convert the regression problem into one of classification. What if we predicted _ranges_ of total points instead of specific values? For this problem, there are two variants: binary-classification and multi-classification. For binary classifcation, we trained our model to predict only a singular range --- in other words, if the game is extected to fall between `[x, x+10]` for some fixed `x`, return `true`.
+Finally, we attempted to convert the regression problem into one of classification. What if we predicted _ranges_ of total points instead of specific values? For this problem, there are two variants: binary-classification and multi-classification. We settled for ranges of size 10 in both problems. For binary classifcation, we trained our model to predict only a singular range --- in other words, if the game is expected to fall between `[x, x+10]` for some fixed `x`, return `true`.
 
-If this model were to yield few false positives, it could lead to significant profit in betting. For instance, say there exists a binary classifier that predicts whether a game will end with a combined score in the range of `[219, 229]`. If this classifier were to have a low precision, then it's implied that placing a bet when prompted is relatively safe, thus guaranteeing positive returns over a sufficiently large span of time.
+If this model were to yield few false positives, it could lead to significant profit in betting. For instance, say there exists a binary classifier that predicts whether a game will end with a combined score in the range of `[219, 229]`. If this classifier were to have a high precision, then it's implied that placing a bet when prompted is relatively safe, thus guaranteeing positive returns over a sufficiently large span of time.
 
-For the multi-classification problem, we set ranges of scores as labels in hopes of gaining better prediction results (when compared to predicting the exact score). Having testing out various bin widths, we eventually settled on a width of 10.
+For the multi-classification problem, we set ranges of scores as labels in hopes of gaining better prediction results (when compared to predicting the exact score). 
 
-To evaluate our model, we settled on 3 metrics: accuracy, precision, and F1-score. We utilized accuracy to get a general idea as to our our predictions, F1-score to handle the impacts of false positives and false negatives, and precision to view how we handled false positives, as you would not want to make a bad bet.
+To evaluate our model, we settled on 3 metrics: accuracy, precision, and F1-score. We utilized accuracy to get an idea of the predictions' quality, precision to account (unsafe bets) for the impact of false negatives, F1-score to account for the impact of false positives (missed betting opportunities) and false negatives.
 
 <div style="float:right; width:50%"><img src="https://i.imgur.com/jkefsUK.jpg"></div><div style="float:left; width:50%"><img src="https://i.imgur.com/AiZbb7K.jpg"></div>
-<h6 style="text-align:center; margin-top:10px; margin-bottom: 20px; color: darkGray"><i>PUT WHAT SCORE MEANS.</i></h6>
+<h6 style="text-align:center; margin-top:10px; margin-bottom: 20px; color: darkGray"><i>Results of the two classification problems. Each group represents the various metrics for the model. Gr</i></h6>
 #### Results
 We did not see good results. Although some models had decent accuracy (.8 - .9) they saw poor F1-scores and precision. Due to this we opted to not continue with hyperparameter tuning.
 
