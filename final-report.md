@@ -30,7 +30,7 @@ Having spent a significant amount of time cleaning our data and receiving lacklu
 
 The goal of using arbitrarily-selected parameters was to identify the model that has the most potential. In other words, we hoped untuned performance would reflect potential performance, which we could then use to decide on a final model to tune. In order to do so, however, we needed some metrics to assess the relative performance of each model. We decided to use R<sup>2</sup> = Residual Sum of Squares ÷ Total Sum of Squares, where R<sup>2</sup> ∈ [-1, 1]. Put simply, this metric can be viewed as the variance in total points that can be explained by the independent variables in the model.
 
-Additionally, we also used root mean square error to evaluate performance. Since we know the context of our problem, there was no need to perform any sort of normalization on this value because we knew the test labels had a standard deviation of 21.2 and a mean of 215.5. As a result, an RMSE less than 10 would be considered great, anything between 10 and 20 would be mediocre, and greater than 20 would be bad. 
+Additionally, we also used root mean square error to evaluate performance. Since we know the context of our problem, there was no need to perform any sort of normalization on this value because we knew the test labels had a standard deviation of 21.2 and a mean of 215.5. As a result, we concluded an RMSE less than 10 would be considered great, anything between 10 and 20 would be mediocre, and greater than 20 would be bad. 
 
 #### Initial Results
 We then proceeded to train each of the three models --- the random forest regression, ridge regression, and neural network --- using the three dataset variants described previously. Overall, the results we received were rather underwhelming. The highest R<sup>2</sup> value was less than 0.1 and all the RMSE's were greater than 20. Obviously, this suggested a critical issue with our data, as the performance of our models was comparable to constantly predicting the mean value.
@@ -48,10 +48,10 @@ Rethinking the plan, we knew we had a data cleaning and feature selection pipeli
 
 
 #### More Data
-Naturally, we wanted to see if throwing more data at the models would give us better performance. As such, we created 2 additional datasets to generate variants from --- one containing data from only the last 10 seasons, and the other with data from the past 20 (all the seasons we scraped). With these two datasets, as well as their 3 respective variants, we saw even greater improvement. Our R<sup>2</sup> values were now consistently hovering around .3 to .4, whereas the RMSE teetered near 17. Despite this advancement, the two datasets each traded blows between different models and variants, so it was not readily apparent which was better to use. Additionally, it seemed that no particular variant performed better or worse than the others, thus providing no means of distinction between the three.
+Naturally, we wanted to see if throwing more data at the models would give us better performance. As such, we created 2 additional datasets to generate variants from --- one containing data from only the last 10 seasons, and the other with data from the past 20 (all the seasons we scraped). With these two datasets, as well as their 3 respective variants, we saw even greater improvement. Our R<sup>2</sup> values were now consistently hovering around .3 to .4, whereas the RMSE teetered near 17. Despite this advancement, the two datasets each traded blows between different models and variants, so it was not readily apparent which was dataset size was better to use. Additionally, it seemed that no particular variant performed better or worse than the others, thus providing no means of distinction between the three.
 
 #### Different Merging Strategy
-Naturally, we wanted to attempt other home/away merging strategies. Since taking the delta did not seem to work in our favor, we decided to pivot to another intuitive operation: multiplication. Using the multiply-merge technique, we observed comparable performance to what we had found before merging --- some variants worked well with particular models and worse with others. The takeaway, however, was that it achieved similar results to its unmerged counterpart.
+Naturally, we wanted to attempt other home/away merging strategies. Since taking the delta did not seem to work in our favor, we decided to pivot to another intuitive operation: multiplication. Using the multiply-merge technique, we observed comparable performance to what we had found before merging --- some variants worked well with particular models and worse with others (none performed noticably better or worse). The takeaway, however, was that it achieved similar results to its unmerged counterpart.
 
 We also attempted an additive-merge strategy on the dataset containing only 10 seasons, but we found its performance was not markedly better (or worse) than our multiplicative approach, so we did not continue pursuing that route.
 
@@ -127,9 +127,9 @@ For the multi-classification problem, we set ranges of scores as labels in hopes
 To evaluate our model, we settled on 3 metrics: accuracy, precision, and F1-score. We utilized accuracy to get a general idea as to our our predictions, F1-score to handle the impacts of false positives and false negatives, and precision to view how we handled false positives, as you would not want to make a bad bet.
 
 <div style="float:right; width:50%"><img src="https://i.imgur.com/jkefsUK.jpg"></div><div style="float:left; width:50%"><img src="https://i.imgur.com/AiZbb7K.jpg"></div>
-
+<h6 style="text-align:center; margin-top:10px; margin-bottom: 20px; color: darkGray"><i>PUT WHAT SCORE MEANS.</i></h6>
 #### Results
-We did not see good results. Although some models, found decent accuracy they saw poor F1-scores and precision. Due to this we opted to not continue with hyperparameter tuning.
+We did not see good results. Although some models had decent accuracy (.8 - .9) they saw poor F1-scores and precision. Due to this we opted to not continue with hyperparameter tuning.
 
 ## Discussion of Results
 In the end, we saw mixed unsupervised learning results with poor K-Means performance and decent PCA performance (dimensionality reduction with PCA did not significantly affect the performance of models). With supervised learning as a regression problem, we saw, at best, mediocre results even with hyperparameter tuning. Furthermore, with supervised learning as a classification problem, we saw extremely underwhelming performance with poor precision and F1-score scores.
