@@ -39,7 +39,7 @@ We then proceeded to train each of the three models --- the random forest regres
 #### A New Plan
 <img src="https://i.imgur.com/jlhSifl.png"><br>
 <img src="https://i.imgur.com/kMxm0dw.png">
-<h6 style="text-align:center; margin-top:10px; margin-bottom: 30px; color: darkGray"><i>Effect of delta-merging on the 2017, 2018, 2019 dataset. Delta-merging's negative impact on the "_scaled" variant was observed on the other datasets as well. The neural network should be taken with a grain of salt due to its arbitrary architecture.</i></h6>
+<h6 style="text-align:center; margin-top:10px; margin-bottom: 30px; color: darkGray"><i>Effect of delta-merging on the 2017, 2018, 2019 dataset. Delta-merging's negative impact on the "_scaled" variant was observed on the other datasets as well. The neural network should be taken with a grain of salt due to its arbitrary architecture.</i></h6> 
 
 Ultimately, we realized our approach might be inherently flawed --- perhaps you can’t predict the combined score of an NBA game by looking solely at a team’s running seasonal averages. As a result, we decided to take a less fine-tuned approach to the problem. 
 
