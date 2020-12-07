@@ -4,6 +4,8 @@ title: Final Report
 nav_order: 3
 ---
 # Final Report
+By Bryce Plunkett, Nicholas Boshart, Sami Rahman, Paul Dittamo
+
 ## Dataset
 ### Initial Datasets
 Initially, we scraped 20 seasons of basketball data from basketballreference.com using a custom scraper. Each row contained the home and away teams' running averages for the season and the total points for the game, with 103 features for each row.  
