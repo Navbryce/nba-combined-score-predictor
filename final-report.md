@@ -4,7 +4,7 @@
 Initially, we scraped 20 seasons of basketball data from basketballreference.com using a custom scraper. Each row contained the home and away teams' running averages for the season and the total points for the game, with 103 features for each row.  
 
 ### Dataset Transformation Pipeline
-![](https://i.imgur.com/xXsJTP8.png) 
+![](https://i.imgur.com/hxlyUY7.png)
 <h6 class="test" style="text-align:center; margin-top:0px; margin-bottom: 20px; color: darkGray"><i>Model of pipeline used to transform each dataset into 3 variants.</i></h6>
 
 After merging home and away scores with delta, data standardization, feature selection, and dimensionality reduction, we were left with three final datasets --- all of which were derived from the same set of seasons (i.e. 2017, 2018, 2019). One dataset had its features cleaned (51 total features), another had been both cleaned and feature-selected (19 total features), and the last had been cleaned, feature-selected, and dimensionality reduced (10 total features).
@@ -78,7 +78,7 @@ Furthermore, we decided to use the feature-selected variant because, overall, it
 
 ### Hyperparmeter Tuning on Final Dataset
 <!-- Insert hyperparameter tuning graph -->
-With our final dataset in hand, we were then able to move onto hyperparameter tuning. Ultimately, because all the models had similar results (with exception to Neural Network due to its arbitrary architecture), we decided to hyperparameter tune _all_ the models. We ended up using Randomized Search Cross Validation (built into SciKitLearn) to search for the best parameters for each model. The train dataset was used to train each model, and the model was scored using R<sup>2</sup> on the validation dataset. The visualizations below represent the a selection of the results for parameter search, including the best among the set. In the end, we chose the parameters that yielded the highest R<sup>2</sup> value for each model. We then ran the models against the test dataset and observed peak values of R<sup>2</sup> = 0.41334 with Random Forest and RMSE = 16.92274 with Ridge Regression.
+With our final dataset in hand, we were then able to move onto hyperparameter tuning. First, we partioned the dataset as follows: 70% train; 10% validation; 20% test. Ultimately, because all the models had similar results (with exception to Neural Network due to its arbitrary architecture), we decided to hyperparameter tune _all_ the models. We ended up using Randomized Search Cross Validation (built into SciKitLearn) to search for the best parameters for each model. The train dataset was used to train each model, and the model was scored using R<sup>2</sup> on the validation dataset. The visualizations below represent the a selection of the results for parameter search, including the best among the set. In the end, we chose the parameters that yielded the highest R<sup>2</sup> value for each model. We then ran the models against the test dataset and observed peak values of R<sup>2</sup> = 0.41334 with Random Forest and RMSE = 16.92274 with Ridge Regression.
 
 #### Random Forest
 <span style="float:left; width:50%"><img src="https://i.imgur.com/rdBSugm.png"></span>
