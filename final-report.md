@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Midterm Report
+title: Final Report
 nav_order: 3
 ---
 # Final Report
