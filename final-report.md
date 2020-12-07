@@ -1,3 +1,8 @@
+---
+layout: default
+title: Midterm Report
+nav_order: 3
+---
 # Final Report
 ## Dataset
 ### Initial Datasets
